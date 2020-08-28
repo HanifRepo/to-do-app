@@ -21,6 +21,12 @@ function newElement(){
         var delete_button = document.createElement("BUTTON")
         var delete_text = document.createTextNode("Delete");
         checkbox_for_the_item.setAttribute("type","checkbox");
+        checkbox_for_the_item.className="checkbox";
+        checkbox_for_the_item.addEventListener('click', function(ev) {
+            if (ev.target.parentNode.parentNode.tagName === 'LI') {
+              ev.target.parentNode.parentNode.classList.toggle('checked');
+            }
+          }, false);
         delete_button.onclick = function(){
             var remove = this.parentNode.parentNode;
             var do_name = this.parentNode.childNodes;
@@ -30,6 +36,7 @@ function newElement(){
             undoElement(remove,timer);
         }
         delete_button.appendChild(delete_text);
+        delete_button.className = "close";
         whole_div_for_appending.appendChild(checkbox_for_the_item);
         div_for_text.style.display = "inline";
         div_for_text.appendChild(to_do_text);
@@ -71,6 +78,12 @@ function oldElement(itm_name){
     var delete_button = document.createElement("BUTTON")
     var delete_text = document.createTextNode("Delete");
     checkbox_for_the_item.setAttribute("type","checkbox");
+    checkbox_for_the_item.className="checkbox";
+    checkbox_for_the_item.addEventListener('click', function(ev) {
+        if (ev.target.parentNode.parentNode.tagName === 'LI') {
+          ev.target.parentNode.parentNode.classList.toggle('checked');
+        }
+      }, false);
     delete_button.onclick = function(){
         var remove = this.parentNode.parentNode;
         var do_name = this.parentNode.childNodes;
@@ -80,6 +93,7 @@ function oldElement(itm_name){
         undoElement(remove,timer);
     }
     delete_button.appendChild(delete_text);
+    delete_button.className = "close";
     whole_div_for_appending.appendChild(checkbox_for_the_item);
     div_for_text.style.display = "inline";
     div_for_text.appendChild(to_do_text);
@@ -101,6 +115,7 @@ function undoElement(parent_remove,timer){
         parent_remove.removeChild(undo_button);
         children[0].style.display = "block";
     }
+    undo_button.className="close";
     undo_button.appendChild(undo_text);
     parent_remove.appendChild(undo_button);
 }
