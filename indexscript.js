@@ -12,18 +12,16 @@ function newElement(){
     var inputValue = document.getElementById("myInput").value;
     document.getElementById("myInput").value="";
     if(inputValue != ""){
-        var appending_list_item = document.createElement("li");
+        var appending_list_item = document.createElement("ol");
         var whole_div_for_appending=document.createElement("div");
-        var checkbox_for_the_item = document.createElement("INPUT");
         var div_for_text = document.createElement("div");
         var to_do_text = document.createTextNode(inputValue);
         var unordered_list = document.getElementById("list");
         var delete_button = document.createElement("BUTTON")
-        var delete_text = document.createTextNode("Delete");
-        checkbox_for_the_item.setAttribute("type","checkbox");
-        checkbox_for_the_item.className="checkbox";
-        checkbox_for_the_item.addEventListener('click', function(ev) {
-            if (ev.target.parentNode.parentNode.tagName === 'LI') {
+        var delete_text = document.createTextNode("X");
+        whole_div_for_appending.className="checkbox";
+        div_for_text.addEventListener('click', function(ev) {
+            if (ev.target.parentNode.parentNode.tagName === 'OL') {
               ev.target.parentNode.parentNode.classList.toggle('checked');
             }
           }, false);
@@ -37,7 +35,6 @@ function newElement(){
         }
         delete_button.appendChild(delete_text);
         delete_button.className = "close";
-        whole_div_for_appending.appendChild(checkbox_for_the_item);
         div_for_text.style.display = "inline";
         div_for_text.appendChild(to_do_text);
         whole_div_for_appending.appendChild(div_for_text);
@@ -69,18 +66,16 @@ function newElement(){
 }
 
 function oldElement(itm_name){
-    var appending_list_item = document.createElement("li");
+    var appending_list_item = document.createElement("ol");
     var whole_div_for_appending=document.createElement("div");
-    var checkbox_for_the_item = document.createElement("INPUT");
     var div_for_text = document.createElement("div");
     var to_do_text = document.createTextNode(itm_name);
     var unordered_list = document.getElementById("list");
     var delete_button = document.createElement("BUTTON")
-    var delete_text = document.createTextNode("Delete");
-    checkbox_for_the_item.setAttribute("type","checkbox");
-    checkbox_for_the_item.className="checkbox";
-    checkbox_for_the_item.addEventListener('click', function(ev) {
-        if (ev.target.parentNode.parentNode.tagName === 'LI') {
+    var delete_text = document.createTextNode("X");
+    whole_div_for_appending.className="checkbox";
+    div_for_text.addEventListener('click', function(ev) {
+        if (ev.target.parentNode.parentNode.tagName === 'OL') {
           ev.target.parentNode.parentNode.classList.toggle('checked');
         }
       }, false);
@@ -94,7 +89,6 @@ function oldElement(itm_name){
     }
     delete_button.appendChild(delete_text);
     delete_button.className = "close";
-    whole_div_for_appending.appendChild(checkbox_for_the_item);
     div_for_text.style.display = "inline";
     div_for_text.appendChild(to_do_text);
     whole_div_for_appending.appendChild(div_for_text);

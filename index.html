@@ -5,13 +5,21 @@
         <link rel="stylesheet" type="text/css" href="index.css">
     </head>
     <body onload="setup()">
-        <div id="myDIV" class="header">
-            <h2>My To Do List</h2>
-            <input type="text" id="myInput" placeholder="Title...">
-            <span><button onclick="newElement()" class="addBtn">Add</button></span>
-        </div>  
-        <ul id="list">
-        </ul>
+        <div class="wholebody_container">
+            <div id="myDIV" class="head_div">
+                <center>
+                    <h1 class="header">To Do List</h1>
+                </center>
+                <div style="display: inline;">
+                    <input type="text" id="myInput" class="to_do_text" placeholder="Enter the task">
+                    <span><button onclick="newElement()" class="addBtn">+</button></span>
+                </div>
+            </div>  
+            <div class="list_container">
+                <ul id="list">
+                </ul>
+            </div>
+        </div>
         <script src="indexscript.js"></script>
     </body>
 </html>
