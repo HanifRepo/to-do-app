@@ -1,24 +1,43 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>To-Do-App</title>
+        <title>
+            To-Do-App
+        </title>
         <link rel="stylesheet" type="text/css" href="index.css">
     </head>
     <body onload="setup()">
-        <div class="wholebody_container">
-            <div id="myDIV" class="head_div">
-                <center>
-                    <h1 class="header">To Do List</h1>
-                </center>
-                <div style="display: inline;">
-                    <input type="text" id="myInput" class="to_do_text" placeholder="Enter the task">
-                    <span><button onclick="newElement()" class="addBtn">+</button></span>
-                </div>
-            </div>  
-            <div class="list_container">
-                <ul id="list">
-                </ul>
+        <div class="whole__container">
+        <center>
+            <div class="app_header">
+               <h1 class="header_name">todos</h1>
             </div>
+            <div class="div_for_text_list_holder">
+                <div class="text__holder">
+                    <input type="text" placeholder="What needs to be done?" id="inputText" class="text_holder" />
+                </div>
+                <div class="list__holder">
+                    <ul class="containing__list" id="list"> 
+
+                    </ul>
+                </div>
+                <div class="summary_holder">
+                    <div class="total_holder">
+                        <span id="items_remaining"></span>
+                    </div>
+                    <div class="choice_holder">
+                        <Button onclick="setup()">All</Button>
+                        <Button onclick="activeList()">Active</Button>
+                        <Button onclick="passiveList()">Checked</Button>
+                    </div>
+                    <div class="button_holder" id="button_holder">
+                        <Button onclick="addCompleted()">Complete</Button>
+                        <Button onclick="deleteSelected()" id="delete">Delete</Button>
+                        <Button onclick="clearCompleted()" id="clear">Clear</Button>
+                    </div>
+                </div>
+            </div>
+        </center>
         </div>
         <script src="indexscript.js"></script>
     </body>
