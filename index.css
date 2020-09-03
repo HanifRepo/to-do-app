@@ -9,6 +9,7 @@ body{
     flex-direction: column;
     flex-wrap: wrap;
     z-index: 5;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .app_header{
