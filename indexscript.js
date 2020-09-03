@@ -26,6 +26,19 @@ input.addEventListener("keyup", function(event) {
 function constructElement(itm_names){
     var appending_list_item = document.createElement("ol");
     var check_box = document.createElement("input");
+    var span = document.createElement("span");
+    span.className="mark";
+    span.textContent="hie";
+    span.style.color="white";
+    check_box.onclick=function(evt){
+        this.parentNode.childNodes[1].style.visibility = "visible";
+    }
+    span.onclick=function(evt){
+        this.style.visibility="hidden";
+        this.parentNode.childNodes[0].style.visibility = "visible";
+        this.parentNode.childNodes[0].checked = false;
+        
+    }
     var para = document.createElement("p");
     para.style.display="inline";
     var list_name = document.getElementById("list");
@@ -46,6 +59,7 @@ function constructElement(itm_names){
             items_from_storage.push(itm_names.trim());
             localStorage.setItem("item_names",JSON.stringify(items_from_storage));
             appending_list_item.appendChild(check_box);
+            appending_list_item.appendChild(span);
             para.appendChild(to_do_text)
             appending_list_item.appendChild(para);
             list_name.appendChild(appending_list_item);
@@ -55,6 +69,7 @@ function constructElement(itm_names){
         items_from_storage[0] = itm_names;
         localStorage.setItem("item_names",JSON.stringify(items_from_storage));
         appending_list_item.appendChild(check_box);
+        appending_list_item.appendChild(span);
         para.appendChild(to_do_text)
         appending_list_item.appendChild(para);
         list_name.appendChild(appending_list_item);
@@ -66,6 +81,19 @@ function constructElementOld(itm_names){
     var para = document.createElement("p");
     para.style.display="inline";
     var check_box = document.createElement("input");
+    var span = document.createElement("span");
+    span.className="mark";
+    span.textContent="hie";
+    span.style.color="white";
+    check_box.onclick=function(evt){
+        this.parentNode.childNodes[1].style.visibility = "visible";
+    }
+    span.onclick=function(evt){
+        this.style.visibility="hidden";
+        this.parentNode.childNodes[0].style.visibility = "visible";
+        this.parentNode.childNodes[0].checked = false;
+        
+    }
     var list_name = document.getElementById("list");
     var item = itm_names.split(":");
     check_box.setAttribute("type","checkbox");
@@ -79,6 +107,7 @@ function constructElementOld(itm_names){
     var to_do_text = document.createTextNode(item[0]);
     para.appendChild(to_do_text)
     appending_list_item.appendChild(check_box);
+    appending_list_item.appendChild(span);
     appending_list_item.appendChild(para);
     list_name.appendChild(appending_list_item);
 }
@@ -91,7 +120,7 @@ function addCompleted(){
             let check_box = list_of_items.childNodes[0];
             if(check_box.checked == true){
                 var items_from_storage = JSON.parse(localStorage.getItem("item_names"));
-                var item_name_to_store = list_of_items.childNodes[1].textContent
+                var item_name_to_store = list_of_items.childNodes[2].textContent
                 var index = items_from_storage.indexOf(item_name_to_store+":uncompleted");
                 items_from_storage[index]= item_name_to_store+":completed";
                 localStorage.setItem("item_names",JSON.stringify(items_from_storage));
@@ -113,7 +142,7 @@ function deleteSelected(){
                 let check_box = list_of_items.childNodes[0];
                 if(check_box.checked == true){
                     var items_from_storage = JSON.parse(localStorage.getItem("item_names"));
-                    var item_name_to_store = list_of_items.childNodes[1].textContent
+                    var item_name_to_store = list_of_items.childNodes[2].textContent
                     var index = items_from_storage.indexOf(item_name_to_store+":completed");
                     if(index == -1){
                         lock=true;
@@ -228,7 +257,7 @@ function clearCompleted(){
                 let check_box = list_of_items.childNodes[0];
                 if(check_box.checked == true){
                     var items_from_storage = JSON.parse(localStorage.getItem("item_names"));
-                    var item_name_to_store = list_of_items.childNodes[1].textContent
+                    var item_name_to_store = list_of_items.childNodes[2].textContent
                     var index = items_from_storage.indexOf(item_name_to_store+":uncompleted");
                     if(index == -1){
                         lock=true;
@@ -274,7 +303,7 @@ function undoElement_completed(deleting_array){
 function permanent_delete_completed(deleting_array){
     var items_from_storage = JSON.parse(localStorage.getItem("item_names"));
     for(let i=0 ; i < deleting_array.length; i++){
-        var text = deleting_array[i].childNodes[1].textContent + ":completed";
+        var text = deleting_array[i].childNodes[2].textContent + ":completed";
         var index = items_from_storage.indexOf(text);
         items_from_storage.splice(index,1);
     }
