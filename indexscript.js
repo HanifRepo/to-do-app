@@ -74,6 +74,7 @@ function constructElement(itm_names){
         appending_list_item.appendChild(para);
         list_name.appendChild(appending_list_item);
     }
+	items_yet_to_be_completed();
 }
 
 function constructElementOld(itm_names){
@@ -110,6 +111,7 @@ function constructElementOld(itm_names){
     appending_list_item.appendChild(span);
     appending_list_item.appendChild(para);
     list_name.appendChild(appending_list_item);
+	items_yet_to_be_completed();
 }
 
 function addCompleted(){
@@ -325,11 +327,13 @@ function permanent_delete_completed(deleting_array){
 function items_yet_to_be_completed(){
     var items_from_storage = JSON.parse(localStorage.getItem("item_names"));
     var count = 0 ;
-    for(let i=0 ; i < items_from_storage.length ; i++){
+    if(items_from_storage != null){
+	for(let i=0 ; i < items_from_storage.length ; i++){
         if(items_from_storage[i].includes("uncompleted") == true){
             count += 1 ;
         }
     }
+	}
     var number_of_items = document.getElementById("items_remaining");
     if(count != 1){
         number_of_items.textContent = count + " items left";
